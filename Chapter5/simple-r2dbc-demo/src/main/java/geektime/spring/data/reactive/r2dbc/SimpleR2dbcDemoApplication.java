@@ -17,9 +17,10 @@ import org.springframework.data.convert.CustomConversions;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
-import org.springframework.data.r2dbc.dialect.Dialect;
-import org.springframework.data.r2dbc.function.DatabaseClient;
-import org.springframework.data.r2dbc.function.convert.R2dbcCustomConversions;
+import org.springframework.data.r2dbc.convert.R2dbcCustomConversions;
+import org.springframework.data.r2dbc.core.DatabaseClient;
+import org.springframework.data.relational.core.dialect.Dialect;
+
 import reactor.core.scheduler.Schedulers;
 
 import java.util.Arrays;
@@ -49,7 +50,7 @@ public class SimpleR2dbcDemoApplication extends AbstractR2dbcConfiguration
 	public R2dbcCustomConversions r2dbcCustomConversions() {
 		Dialect dialect = getDialect(connectionFactory());
 		CustomConversions.StoreConversions storeConversions =
-				CustomConversions.StoreConversions.of(dialect.getSimpleTypeHolder());
+				CustomConversions.StoreConversions.of(((CustomConversions) dialect).getSimpleTypeHolder());
 		return new R2dbcCustomConversions(storeConversions,
 				Arrays.asList(new MoneyReadConverter(), new MoneyWriteConverter()));
 	}
@@ -57,16 +58,6 @@ public class SimpleR2dbcDemoApplication extends AbstractR2dbcConfiguration
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		CountDownLatch cdl = new CountDownLatch(2);
-
-		client.execute()
-				.sql("select * from t_coffee")
-				.as(Coffee.class)
-				.fetch()
-				.first()
-				.doFinally(s -> cdl.countDown())
-//				.subscribeOn(Schedulers.elastic())
-				.subscribe(c -> log.info("Fetch execute() {}", c));
-
 		client.select()
 				.from("t_coffee")
 				.orderBy(Sort.by(Sort.Direction.DESC, "id"))
