@@ -37,15 +37,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+	<!--  mvn clean package '-Dmaven.test.skip=true'打包 -->
 	<build>
-		<plugins>
+		<plugins>\
+			<!-- 不使用spring-boot-maven-plugin插件打包springboot的项目，生成的jar是无法运行的，直接打包的jar仅仅是一个普通的jar，没有打包依赖也没有main-class，所以无法直接运行 -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>2.1.1.RELEASE</version>
 				<executions>
 					<execution>
+						<!-- 显式打可执行的jar包，不做依赖使用，引入这样的jar会报错找不到类，
+						     如果不引入这个spring-boot-maven-plugin插件，直接mvn clean package 打的是依赖包，不可执行，作为其他项目的依赖添加 -->
 						<goals>
 							<goal>repackage</goal>
 						</goals>
