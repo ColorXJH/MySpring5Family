@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DeclarativeTransactionDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.declarativetransactiondemo.DeclarativeTransactionDemoApplication",
+            "projectName": "geektime.spring.data-declarative-transaction-demo"
+        },
+        {
+            "type": "java",
+            "name": "DataSourceDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.datasourcedemo.DataSourceDemoApplication",
+            "projectName": "geektime.spring.data-datasource-demo"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-HelloWorldApplication<geektime.demo-helloworld>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
