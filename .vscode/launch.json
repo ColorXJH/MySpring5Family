@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-HelloWorldApplication<geektime.demo-helloworld>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "geektime.demo.HelloWorldApplication",
+            "projectName": "geektime.demo-helloworld",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
