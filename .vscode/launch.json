@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TransactionPropagationDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.propagation.TransactionPropagationDemoApplication",
+            "projectName": "geektime.spring.data-transaction-propagation-demo"
+        },
+        {
+            "type": "java",
+            "name": "SimpleJdbcDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.simplejdbcdemo.SimpleJdbcDemoApplication",
+            "projectName": "geektime.spring.data-simple-jdbc-demo"
+        },
+        {
+            "type": "java",
+            "name": "ProgrammaticTransactionDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.programmatictransactiondemo.ProgrammaticTransactionDemoApplication",
+            "projectName": "geektime.spring.data-programmatic-transaction-demo"
+        },
+        {
+            "type": "java",
             "name": "DeclarativeTransactionDemoApplication",
             "request": "launch",
             "mainClass": "geektime.spring.data.declarativetransactiondemo.DeclarativeTransactionDemoApplication",
