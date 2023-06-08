@@ -32,7 +32,7 @@ public class JpaDemoApplication implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		initOrders();
+		// initOrders();
 	}
 
 	private void initOrders() {

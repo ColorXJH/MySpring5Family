@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "JpaDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.springbucks.jpademo.JpaDemoApplication",
+            "projectName": "geektime.spring.springbucks-jpa-complex-demo"
+        },
+        {
+            "type": "java",
+            "name": "JpaDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.springbucks.jpademo.JpaDemoApplication",
+            "projectName": "geektime.spring.springbucks-jpa-demo"
+        },
+        {
+            "type": "java",
             "name": "ErrorCodeDemoApplication",
             "request": "launch",
             "mainClass": "geektime.spring.data.errorcodedemo.ErrorCodeDemoApplication",

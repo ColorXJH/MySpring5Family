@@ -1,6 +1,8 @@
 package geektime.spring.data.multidatasourcedemo;
 
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -9,6 +11,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -61,6 +64,16 @@ public class MultiDataSourceDemoApplication {
     @Resource
     public PlatformTransactionManager barTxManager(DataSource barDataSource) {
         return new DataSourceTransactionManager(barDataSource);
+    }
+
+    @Bean
+    JdbcTemplate jdbcTemplateOne(@Qualifier("barDataSource") DataSource dsOne) {
+        return new JdbcTemplate(dsOne);
+    }
+    
+    @Bean
+    JdbcTemplate jdbcTemplateTwo(@Qualifier("fooDataSource") DataSource dsTwo) {
+        return new JdbcTemplate(dsTwo);
     }
 }
 
