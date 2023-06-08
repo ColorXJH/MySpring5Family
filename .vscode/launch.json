@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ErrorCodeDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.errorcodedemo.ErrorCodeDemoApplication",
+            "projectName": "geektime.spring.data-errorcode-demo"
+        },
+        {
+            "type": "java",
             "name": "TransactionPropagationDemoApplication",
             "request": "launch",
             "mainClass": "geektime.spring.data.propagation.TransactionPropagationDemoApplication",
