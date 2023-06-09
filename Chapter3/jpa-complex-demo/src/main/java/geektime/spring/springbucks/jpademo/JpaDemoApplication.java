@@ -40,8 +40,8 @@ public class JpaDemoApplication implements ApplicationRunner {
 	@Override
 	@Transactional
 	public void run(ApplicationArguments args) throws Exception {
-		// initOrders();
-		// findOrders();
+		 initOrders();
+		 findOrders();
 	}
 
 	private void initOrders() {

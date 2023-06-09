@@ -2,6 +2,8 @@ package geektime.spring.data.mybatis.handler;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedJdbcTypes;
+import org.apache.ibatis.type.MappedTypes;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 
@@ -13,6 +15,8 @@ import java.sql.SQLException;
 /**
  * 在 Money 与 Long 之间转换的 TypeHandler，处理 CNY 人民币
  */
+// @MappedJdbcTypes(value = JdbcType.BIGINT,includeNullJdbcType = true)
+// @MappedTypes(Money.class)
 public class MoneyTypeHandler extends BaseTypeHandler<Money> {
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, Money parameter, JdbcType jdbcType) throws SQLException {

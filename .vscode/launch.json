@@ -2,6 +2,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MybatisDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.mybatisdemo.MybatisDemoApplication",
+            "projectName": "geektime.spring.data-mybatis-pagehelper-demo"
+        },
+        {
+            "type": "java",
+            "name": "MybatisGeneratorDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.mybatis.MybatisGeneratorDemoApplication",
+            "projectName": "geektime.spring.data-mybatis-generator-demo"
+        },
+        {
+            "type": "java",
+            "name": "MybatisDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.mybatisdemo.MybatisDemoApplication",
+            "projectName": "geektime.spring.data-mybatis-demo"
+        },
+        {
+            "type": "java",
+            "name": "WaiterServiceApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.springbucks.waiter.WaiterServiceApplication",
+            "projectName": "geektime.spring.springbucks-waiter-service"
+        },
+        {
+            "type": "java",
             "name": "JpaDemoApplication",
             "request": "launch",
             "mainClass": "geektime.spring.springbucks.jpademo.JpaDemoApplication",

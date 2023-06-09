@@ -29,12 +29,15 @@ public class MybatisGeneratorDemoApplication implements ApplicationRunner {
 	private CoffeeMapper coffeeMapper;
 
 	public static void main(String[] args) {
+		//1:这里需要在运行前现在resources里创建一下mapper目录，也就是目标目录需要先存在
+		//2:如果你把所有项目都在idea里打开了，xml配置里的targetProject路径要设置为形如“Chapter3/mybatis-generator-demo/src/main/resources/mapper”这个样子。
+		//否则代码不会生成到想要的地方的，因为项目的基本路径是MySpring5Family
 		SpringApplication.run(MybatisGeneratorDemoApplication.class, args);
 	}
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-//		generateArtifacts();
+		//generateArtifacts();
 		playWithArtifacts();
 	}
 
