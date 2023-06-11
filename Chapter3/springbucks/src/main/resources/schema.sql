@@ -1,6 +1,11 @@
-drop table t_coffee if exists;
-drop table t_order if exists;
-drop table t_order_coffee if exists;
+--h2
+-- drop table t_coffee if exists;
+-- drop table t_order if exists;
+-- drop table t_order_coffee if exists;
+--mysql
+drop table  if exists t_coffee;
+drop table  if exists t_order;
+drop table  if exists t_order_coffee;
 
 create table t_coffee (
     id bigint auto_increment,
