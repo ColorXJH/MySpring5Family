@@ -18,6 +18,8 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 @Slf4j
 @Service
 public class CoffeeService {
+    //对于同时使用japRepository redisRepository mongoRepository，springboot有三种办法去识别：1：根据实体的注解，2：根据继承的接口类型 3：扫描不同的包
+
     @Autowired
     private CoffeeRepository coffeeRepository;
     @Autowired
