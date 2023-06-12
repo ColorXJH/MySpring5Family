@@ -32,10 +32,13 @@ public class SpringBucksApplication implements ApplicationRunner {
 	@Autowired
 	private JedisPoolConfig jedisPoolConfig;
 
+	//启动redis：docker run --name my_redis -p 6379:6379 -d redis 
+	//关闭的container 重新启动redis:docker start redis 或者 docker container restart container_id
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBucksApplication.class, args);
 	}
 
+	//配置jredis的一些设置
 	@Bean
 	@ConfigurationProperties("redis")
 	public JedisPoolConfig jedisPoolConfig() {

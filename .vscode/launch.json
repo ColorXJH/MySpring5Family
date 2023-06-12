@@ -4,6 +4,26 @@
             "type": "java",
             "name": "SpringBucksApplication",
             "request": "launch",
+            "mainClass": "geektime.spring.springbucks.SpringBucksApplication"
+        },
+        {
+            "type": "java",
+            "name": "MongoRepositoryDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.mongodemo.MongoRepositoryDemoApplication",
+            "projectName": "geektime.spring.data-mongo-repository-demo"
+        },
+        {
+            "type": "java",
+            "name": "MongoDemoApplication",
+            "request": "launch",
+            "mainClass": "geektime.spring.data.mongodemo.MongoDemoApplication",
+            "projectName": "geektime.spring.data-mongo-demo"
+        },
+        {
+            "type": "java",
+            "name": "SpringBucksApplication",
+            "request": "launch",
             "mainClass": "geektime.spring.springbucks.SpringBucksApplication",
             "projectName": "geektime.spring-springbucks"
         },

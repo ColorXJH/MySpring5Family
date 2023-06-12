@@ -28,13 +28,18 @@ import static org.springframework.data.mongodb.core.query.Query.query;
 @SpringBootApplication
 @Slf4j
 public class MongoDemoApplication implements ApplicationRunner {
+	//docker 启动mongo命令：
+	//docker run --name docker_mongodb -p 27017:27017  -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -d mongo
+	//docker ps 查看在运行的容器
+	//docker 进入容器内部执行mongo数据库：docker exec -it 容器id bash
+	//登录数据库的命令行：mongosh -u admin -p admin
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MongoDemoApplication.class, args);
 	}
-
+	//使用这个MoneyReadConverter,使用mongoTemplate会注入进来
 	@Bean
 	public MongoCustomConversions mongoCustomConversions() {
 		return new MongoCustomConversions(Arrays.asList(new MoneyReadConverter()));
@@ -63,7 +68,6 @@ public class MongoDemoApplication implements ApplicationRunner {
 		log.info("Update Result: {}", result.getModifiedCount());
 		Coffee updateOne = mongoTemplate.findById(saved.getId(), Coffee.class);
 		log.info("Update Result: {}", updateOne);
-
 		mongoTemplate.remove(updateOne);
 	}
 }
