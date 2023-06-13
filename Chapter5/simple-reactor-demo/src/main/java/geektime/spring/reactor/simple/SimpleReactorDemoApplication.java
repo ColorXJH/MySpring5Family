@@ -6,7 +6,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 @SpringBootApplication
@@ -21,15 +20,15 @@ public class SimpleReactorDemoApplication implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		Flux.range(1, 6)
 				.doOnRequest(n -> log.info("Request {} number", n)) // 注意顺序造成的区别
-//				.publishOn(Schedulers.elastic())
+				.publishOn(Schedulers.elastic())
 				.doOnComplete(() -> log.info("Publisher COMPLETE 1"))
 				.map(i -> {
 					log.info("Publish {}, {}", Thread.currentThread(), i);
-					return 10 / (i - 3);
-//					return i;
+					//return 10 / (i - 3);
+					return i;
 				})
 				.doOnComplete(() -> log.info("Publisher COMPLETE 2"))
-//				.subscribeOn(Schedulers.single())
+				.subscribeOn(Schedulers.single())
 //				.onErrorResume(e -> {
 //					log.error("Exception {}", e.toString());
 //					return Mono.just(-1);

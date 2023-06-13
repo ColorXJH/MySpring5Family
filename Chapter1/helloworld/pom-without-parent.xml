@@ -39,7 +39,7 @@
 	</dependencies>
 	<!--  mvn clean package '-Dmaven.test.skip=true'打包 -->
 	<build>
-		<plugins>\
+		<plugins>
 			<!-- 不使用spring-boot-maven-plugin插件打包springboot的项目，生成的jar是无法运行的，直接打包的jar仅仅是一个普通的jar，没有打包依赖也没有main-class，所以无法直接运行 -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
