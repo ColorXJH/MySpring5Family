@@ -15,8 +15,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.core.query.Update;
+import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -56,6 +58,31 @@ public class MongodbDemoApplication implements ApplicationRunner {
 //		decreaseHighPrice();
 
 		cdl.await();
+		List<String> list = new ArrayList<>();
+		list.add("1");
+		list.add("2");
+		list.add("3");
+		list.add("4");
+		list.add("5");
+		// 添加数据源
+		Flux.fromIterable(list)
+				// 每处里一个数据前 就会执行该方法
+				.doOnNext((n) -> {
+					System.out.println("next");
+				})
+				// 执行完数据流执行该方法
+				.doFinally((f) -> {
+					 System.out.println("finally");
+				})
+				// 每处里一个数据前就会执行该方法
+				.doOnEach((e) -> {
+					System.out.println("each");
+				})
+				//执行结束之后输出
+				.doOnComplete(()->{
+					System.out.println("complete");
+				})
+				.subscribe((System.out::println));
 	}
 
 	private void startFromInsertion(Runnable runnable) {

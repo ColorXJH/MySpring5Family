@@ -15,7 +15,8 @@ import java.util.Arrays;
 @Slf4j
 @Service
 @Transactional
-public class CoffeeOrderService {
+public class
+CoffeeOrderService {
     @Autowired
     private CoffeeOrderRepository orderRepository;
 
