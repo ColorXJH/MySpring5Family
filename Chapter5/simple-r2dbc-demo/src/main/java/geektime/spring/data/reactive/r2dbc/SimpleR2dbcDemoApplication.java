@@ -17,10 +17,9 @@ import org.springframework.data.convert.CustomConversions;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
-import org.springframework.data.r2dbc.convert.R2dbcCustomConversions;
-import org.springframework.data.r2dbc.core.DatabaseClient;
-import org.springframework.data.relational.core.dialect.Dialect;
-
+import org.springframework.data.r2dbc.dialect.Dialect;
+import org.springframework.data.r2dbc.function.DatabaseClient;
+import org.springframework.data.r2dbc.function.convert.R2dbcCustomConversions;
 import reactor.core.scheduler.Schedulers;
 
 import java.util.Arrays;
@@ -33,10 +32,12 @@ public class SimpleR2dbcDemoApplication extends AbstractR2dbcConfiguration
 	@Autowired
 	private DatabaseClient client;
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(SimpleR2dbcDemoApplication.class, args);
 	}
 
+	@Override
 	@Bean
 	public ConnectionFactory connectionFactory() {
 		return new H2ConnectionFactory(
@@ -46,11 +47,11 @@ public class SimpleR2dbcDemoApplication extends AbstractR2dbcConfiguration
 						.build());
 	}
 
+	@Override
 	@Bean
 	public R2dbcCustomConversions r2dbcCustomConversions() {
-		Dialect dialect = getDialect(connectionFactory());
-		CustomConversions.StoreConversions storeConversions =
-				CustomConversions.StoreConversions.of(((CustomConversions) dialect).getSimpleTypeHolder());
+		Dialect dialect = this.getDialect(this.connectionFactory());
+		CustomConversions.StoreConversions storeConversions = CustomConversions.StoreConversions.of(dialect.getSimpleTypeHolder(), new Object[0]);
 		return new R2dbcCustomConversions(storeConversions,
 				Arrays.asList(new MoneyReadConverter(), new MoneyWriteConverter()));
 	}
@@ -58,6 +59,14 @@ public class SimpleR2dbcDemoApplication extends AbstractR2dbcConfiguration
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		CountDownLatch cdl = new CountDownLatch(2);
+		client.execute()
+				.sql("select * from t_coffee")
+				.as(Coffee.class)
+				.fetch()
+				.first()
+				.doFinally(s -> cdl.countDown())
+				.subscribeOn(Schedulers.elastic())
+				.subscribe(c -> log.info("Fetch execute() {}", c));
 		client.select()
 				.from("t_coffee")
 				.orderBy(Sort.by(Sort.Direction.DESC, "id"))
@@ -66,7 +75,7 @@ public class SimpleR2dbcDemoApplication extends AbstractR2dbcConfiguration
 				.fetch()
 				.all()
 				.doFinally(s -> cdl.countDown())
-//				.subscribeOn(Schedulers.elastic())
+				.subscribeOn(Schedulers.elastic())
 				.subscribe(c -> log.info("Fetch select() {}", c));
 
 		log.info("After Starting.");

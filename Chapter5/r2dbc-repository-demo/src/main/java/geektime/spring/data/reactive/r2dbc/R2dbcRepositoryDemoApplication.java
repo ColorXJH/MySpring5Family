@@ -15,10 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.convert.CustomConversions;
 import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
-import org.springframework.data.r2dbc.convert.R2dbcCustomConversions;
+import org.springframework.data.r2dbc.dialect.Dialect;
+import org.springframework.data.r2dbc.function.convert.R2dbcCustomConversions;
 import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
-import org.springframework.data.relational.core.dialect.Dialect;
-
 import reactor.core.publisher.Flux;
 
 import java.util.Arrays;
@@ -36,6 +35,7 @@ public class R2dbcRepositoryDemoApplication extends AbstractR2dbcConfiguration
 		SpringApplication.run(R2dbcRepositoryDemoApplication.class, args);
 	}
 
+	@Override
 	@Bean
 	public ConnectionFactory connectionFactory() {
 		return new H2ConnectionFactory(
@@ -45,11 +45,11 @@ public class R2dbcRepositoryDemoApplication extends AbstractR2dbcConfiguration
 						.build());
 	}
 
+	@Override
 	@Bean
 	public R2dbcCustomConversions r2dbcCustomConversions() {
-		Dialect dialect = getDialect(connectionFactory());
-		CustomConversions.StoreConversions storeConversions =
-				CustomConversions.StoreConversions.of(((CustomConversions) dialect).getSimpleTypeHolder());
+		Dialect dialect = this.getDialect(this.connectionFactory());
+		CustomConversions.StoreConversions storeConversions = CustomConversions.StoreConversions.of(dialect.getSimpleTypeHolder(), new Object[0]);
 		return new R2dbcCustomConversions(storeConversions,
 				Arrays.asList(new MoneyReadConverter(), new MoneyWriteConverter()));
 	}

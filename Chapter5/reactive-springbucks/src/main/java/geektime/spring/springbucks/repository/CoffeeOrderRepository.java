@@ -2,6 +2,7 @@ package geektime.spring.springbucks.repository;
 
 import geektime.spring.springbucks.model.CoffeeOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.r2dbc.function.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -11,7 +12,7 @@ import java.sql.Timestamp;
 @Repository
 public class CoffeeOrderRepository {
     @Autowired
-    private org.springframework.data.r2dbc.core.DatabaseClient databaseClient;
+    private DatabaseClient databaseClient;
 
     public Mono<Long> save(CoffeeOrder order) {
         return databaseClient.insert().into("t_order")
