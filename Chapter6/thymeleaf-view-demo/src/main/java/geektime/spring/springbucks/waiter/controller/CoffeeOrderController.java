@@ -50,7 +50,7 @@ public class CoffeeOrderController {
                 .toArray(new Coffee[] {});
         return orderService.createOrder(newOrder.getCustomer(), coffeeList);
     }
-
+    //将结果返回到ModelMap中
     @ModelAttribute
     public List<Coffee> coffeeList() {
         return coffeeService.getAllCoffee();
