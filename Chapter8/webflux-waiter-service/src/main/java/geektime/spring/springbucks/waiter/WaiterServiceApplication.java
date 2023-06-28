@@ -26,6 +26,7 @@ public class WaiterServiceApplication extends AbstractR2dbcConfiguration {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}
 
+	@Override
 	@Bean
 	public ConnectionFactory connectionFactory() {
 		return new H2ConnectionFactory(
@@ -35,6 +36,7 @@ public class WaiterServiceApplication extends AbstractR2dbcConfiguration {
 						.build());
 	}
 
+	@Override
 	@Bean
 	public R2dbcCustomConversions r2dbcCustomConversions() {
 		Dialect dialect = getDialect(connectionFactory());
