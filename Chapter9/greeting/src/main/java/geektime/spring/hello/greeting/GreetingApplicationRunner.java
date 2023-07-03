@@ -10,6 +10,10 @@ public class GreetingApplicationRunner implements ApplicationRunner {
         log.info("Initializing GreetingApplicationRunner.");
     }
 
+    public GreetingApplicationRunner(String name) {
+        log.info("Initializing GreetingApplicationRunner."+name);
+    }
+
     public void run(ApplicationArguments args) throws Exception {
         log.info("Hello everyone! We all like Spring! ");
     }

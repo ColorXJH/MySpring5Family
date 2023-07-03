@@ -1,1 +1,2 @@
-org.springframework.boot.env.EnvironmentPostProcessor=geektime.spring.hello.YapfEnvironmentPostProcessor
+#org.springframework.boot.env.EnvironmentPostProcessor=geektime.spring.hello.YapfEnvironmentPostProcessor
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=geektime.spring.hello.YapfEnvironmentPostProcessor2

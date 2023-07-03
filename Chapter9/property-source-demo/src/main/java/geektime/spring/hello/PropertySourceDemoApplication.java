@@ -13,12 +13,14 @@ public class PropertySourceDemoApplication implements ApplicationRunner {
 	@Value("${geektime.greeting}")
 	private String greeting;
 
+	@Value("${geektime.greeting2}")
+	private String greeting2;
 	public static void main(String[] args) {
 		SpringApplication.run(PropertySourceDemoApplication.class, args);
 	}
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		log.info("{}", greeting);
+		log.info("{}-{}", greeting,greeting2);
 	}
 }

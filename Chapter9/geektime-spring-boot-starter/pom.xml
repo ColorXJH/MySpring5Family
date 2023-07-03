@@ -9,14 +9,16 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
-		<spring-boot.version>2.1.18.RELEASE</spring-boot.version>
+		<spring-boot.version>2.1.3.RELEASE</spring-boot.version>
 	</properties>
 	<dependencies>
+        <!--	自动配置依赖	-->
 		<dependency>
 			<groupId>geektime.spring.hello</groupId>
 			<artifactId>geektime-spring-boot-autoconfigure</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!--	项目需要的其他依赖	-->
 		<dependency>
 			<groupId>geektime.spring.hello</groupId>
 			<artifactId>greeting</artifactId>

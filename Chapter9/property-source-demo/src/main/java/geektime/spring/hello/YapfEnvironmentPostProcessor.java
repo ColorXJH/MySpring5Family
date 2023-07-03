@@ -10,7 +10,7 @@ import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-@Slf4j
+/*@Slf4j
 public class YapfEnvironmentPostProcessor implements EnvironmentPostProcessor {
     private PropertiesPropertySourceLoader loader = new PropertiesPropertySourceLoader();
     @Override
@@ -25,4 +25,4 @@ public class YapfEnvironmentPostProcessor implements EnvironmentPostProcessor {
             log.error("Exception!", e);
         }
     }
-}
+}*/
