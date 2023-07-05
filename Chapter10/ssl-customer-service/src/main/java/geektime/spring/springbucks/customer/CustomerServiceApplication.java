@@ -2,15 +2,9 @@ package geektime.spring.springbucks.customer;
 
 import geektime.spring.springbucks.customer.support.CustomConnectionKeepAliveStrategy;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.Banner;
@@ -23,7 +17,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +28,8 @@ public class CustomerServiceApplication {
 	private Resource keyStore;
 	@Value("${security.key-pass}")
 	private String keyPass;
-
+	//启动服务端之后直接在命令行调用：curl https://localhost::8849/coffee/1 会报错显示不受信任的证书
+	//使用命令 curl -k -v https://localhost:8849/coffee/1 接受不信任的证书，则可以得到返回值，就使用了ssl的链接了
 	public static void main(String[] args) {
 		new SpringApplicationBuilder()
 				.sources(CustomerServiceApplication.class)

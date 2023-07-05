@@ -26,7 +26,7 @@ public class WaiterServiceApplication implements WebMvcConfigurer,
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}
-
+    //curl -H "Accept-Encoding: gzip" -v http://localhost:8080/coffee/1 --output E:\demo.txt
 	@Override
 	public void customize(TomcatServletWebServerFactory factory) {
 		Compression compression = new Compression();

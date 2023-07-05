@@ -21,6 +21,8 @@ public class WaiterServiceApplication implements WebMvcConfigurer {
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}
+    //生成证书文件：
+		//keytool -genkey -alias colorToken -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore colorToken.p12 -validity 365
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
