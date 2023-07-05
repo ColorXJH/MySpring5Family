@@ -6,7 +6,7 @@ import geektime.spring.springbucks.waiter.service.CoffeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+//import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,7 @@ public class CoffeeController {
 
     @PostMapping(path = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Coffee> batchAddCoffee(@RequestParam("file") MultipartFile file) {
+/*    public List<Coffee> batchAddCoffee(@RequestParam("file") MultipartFile file) {
         List<Coffee> coffees = new ArrayList<>();
         if (!file.isEmpty()) {
             BufferedReader reader = null;
@@ -73,7 +73,7 @@ public class CoffeeController {
             }
         }
         return coffees;
-    }
+    }*/
 
     @GetMapping(path = "/", params = "!name")
     public List<Coffee> getAll() {

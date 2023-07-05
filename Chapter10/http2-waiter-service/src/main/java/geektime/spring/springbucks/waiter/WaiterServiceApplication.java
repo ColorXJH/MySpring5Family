@@ -17,7 +17,8 @@ import java.util.TimeZone;
 @EnableJpaRepositories
 @EnableCaching
 public class WaiterServiceApplication implements WebMvcConfigurer {
-
+	//curl  -k -I https://localhost:8443/coffee/1
+	//curl  -k -I -v https://localhost:8443/coffee/1
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}
