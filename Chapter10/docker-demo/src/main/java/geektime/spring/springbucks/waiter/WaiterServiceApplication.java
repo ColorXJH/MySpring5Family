@@ -17,7 +17,11 @@ import java.util.TimeZone;
 @EnableJpaRepositories
 @EnableCaching
 public class WaiterServiceApplication implements WebMvcConfigurer {
-
+	//首先要开放docker的对外端口：Expose daemon on tcp://localhost:2375 without TLS
+	//其次docker编译需要openjdk8镜像 所以需要修改docker file :FROM openjdk:8
+	//同时先下载该镜像到docker
+	//最后运行镜像： docker run --name waiter-service -d -p 8080:8080 springbucks/waiter-service:0.0.1-SNAPSHOT
+	//访问服务：curl http://localhost:8080/coffee/1
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}
