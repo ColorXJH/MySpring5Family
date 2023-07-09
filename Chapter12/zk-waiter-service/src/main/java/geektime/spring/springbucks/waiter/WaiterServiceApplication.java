@@ -19,7 +19,16 @@ import java.util.TimeZone;
 @EnableCaching
 @EnableDiscoveryClient
 public class WaiterServiceApplication implements WebMvcConfigurer {
-
+	//docker pull zookeeper:3.5
+	//docker run --name zookeeper -p 2181:2181 -d zookeeper:3.5
+	//docker exec -it zookeeper bash
+	//ls
+	//cd bin
+	//./zkCli.sh  (连接上zookeeper客户端)
+	//ls /
+	//ls /services
+	//ls /services/water-service   (6cc48769-6573-482e-89ee-918640fa49cc就是组测进来的节点信息)
+	//get /services/waiter-service/6cc48769-6573-482e-89ee-918640fa49cc
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}

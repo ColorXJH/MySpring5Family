@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @EnableDiscoveryClient
 public class CustomerServiceApplication {
-
+    //启动时先启动第六章的springbucks 先启动一个water-service
     public static void main(String[] args) {
         SpringApplication.run(CustomerServiceApplication.class, args);
     }
@@ -36,7 +36,7 @@ public class CustomerServiceApplication {
 
     @Bean
     public FixedServerList fixedServerList() {
-        return new FixedServerList();
+            return new FixedServerList();
     }
 
     @Bean

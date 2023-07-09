@@ -19,7 +19,9 @@ import java.util.TimeZone;
 @EnableCaching
 @EnableDiscoveryClient
 public class WaiterServiceApplication implements WebMvcConfigurer {
-
+	//docker pull consul:1.5.2
+	//docker run --name consul -d -p 8500:8500 -p 8600:8600/udp consul:1.5.2  (同时绑定两个端口，8600通过upd方式，演示DNS方式解析服务)
+	//访问consul ui: http://localhost:8500/
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}

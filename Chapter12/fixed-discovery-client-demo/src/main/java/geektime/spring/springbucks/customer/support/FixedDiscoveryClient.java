@@ -2,15 +2,18 @@ package geektime.spring.springbucks.customer.support;
 
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.DefaultServiceInstance;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @ConfigurationProperties("waiter")
+@EnableConfigurationProperties(FixedDiscoveryClient.class)//是将让使用了 @ConfigurationProperties 注解的配置类生效,将该类注入到 IOC 容器中,
+//其实不配置也可以，以为后面在启动类里面直接生成了一个bean,所以说在这里配置@Component和在后面配置@Bean的效果是一样的
 @Setter
 public class FixedDiscoveryClient implements DiscoveryClient {
     public static final String SERVICE_ID = "waiter-service";

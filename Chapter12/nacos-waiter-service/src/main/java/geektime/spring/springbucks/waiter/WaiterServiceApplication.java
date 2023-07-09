@@ -19,7 +19,11 @@ import java.util.TimeZone;
 @EnableCaching
 @EnableDiscoveryClient
 public class WaiterServiceApplication implements WebMvcConfigurer {
-
+	//docker 本地启动一个nacos-server:
+	//docker pull nacos/nacos-server
+	//docker run --name nacos -d -p 8848:8848 -e MODE=standalone   nacos/nacos-server
+	//用户名、密码为nacos
+	//访问nacos http://localhost:8848/nacos/
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}
