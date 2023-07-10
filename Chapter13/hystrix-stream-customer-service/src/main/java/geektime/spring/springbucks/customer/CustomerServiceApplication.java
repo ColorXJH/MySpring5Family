@@ -24,6 +24,10 @@ public class CustomerServiceApplication {
 		SpringApplication.run(CustomerServiceApplication.class, args);
 	}
 
+	//使用Feign的注解定义接口的方法，指定请求的URL、HTTP方法、请求参数等信息。
+	//在Feign的配置类中，使用@Bean注解配置CloseableHttpClient，并设置连接池管理、连接保持活动等策略。
+	//在服务类中注入Feign生成的接口，并使用它来发送HTTP请求。
+
 	@Bean
 	public CloseableHttpClient httpClient() {
 		return HttpClients.custom()
