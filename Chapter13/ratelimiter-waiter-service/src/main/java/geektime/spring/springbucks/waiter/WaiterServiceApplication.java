@@ -19,10 +19,16 @@ import java.util.TimeZone;
 @EnableCaching
 @EnableDiscoveryClient
 public class WaiterServiceApplication implements WebMvcConfigurer {
+	//ab做post请求的时候需要创建一个psot内容体，
+	//touch /temp/empty.txt
+	//ab -c 5 -n 10 -p /temp/empty.txt http://localhost:8090/customer/order
 
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}
+	//断路器 隔仓 限流 重试这几个我在一个方法上都加了会以什么样的优先级顺序执行呢？
+		// 默认顺序是 retry -> bulkhead -> circuitbreaker -> ratelimiter，
+	    // 可以看RateLimiterConfigurationProperties.rateLimiterAspectOrder的值，其他几个也是类似的。这些切面都是实现了Ordered的，因此可以指定顺序执行
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {

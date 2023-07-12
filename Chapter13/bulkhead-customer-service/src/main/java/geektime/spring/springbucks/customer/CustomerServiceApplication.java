@@ -23,7 +23,8 @@ public class CustomerServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerServiceApplication.class, args);
 	}
-
+	//curl -X POST http://localhost:8090/customer/order
+	//并发请求 ab-c 5 -n 10 http://localhost:8090/customer/menu   (5个并发，一共请求10次)  linux端
 	@Bean
 	public CloseableHttpClient httpClient() {
 		return HttpClients.custom()
