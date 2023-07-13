@@ -19,7 +19,16 @@ import java.util.TimeZone;
 @EnableCaching
 @EnableDiscoveryClient
 public class WaiterServiceApplication implements WebMvcConfigurer {
-
+	//docker 启动consul注册中心 和zookeeper配置中心
+	//连接进zookeeper: docker exec -it zookeeper bash
+		//cd bin
+		//ls
+		//./zkCli.sh  (连接客户端)
+		// create /config  (创建节点)
+		// create /config/waiter-service
+		// create /config/waiter-service/order.discount 60
+			//get /config/waiter-service/order.discount
+			//set /config/waiter-service/order.discount 30  (更改折扣，zk自动刷新配置到spring,不用再像使用spring-cloud-config的时候使用Refresh节点刷新了)
 	public static void main(String[] args) {
 		SpringApplication.run(WaiterServiceApplication.class, args);
 	}
