@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8
 
 ENV SERVER_PORT 8090
 

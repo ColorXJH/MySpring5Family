@@ -23,7 +23,8 @@ import java.util.TimeZone;
 @EnableDiscoveryClient
 @EnableBinding({ Barista.class, Customer.class })
 public class WaiterServiceApplication implements WebMvcConfigurer {
-
+    //zipkin 镜像拉取： docker pull openzipkin/zipkin
+    //运行zipkin： docker run --name zipkin -d -p 9411:9411 openzipkin/zipkin
     public static void main(String[] args) {
         SpringApplication.run(WaiterServiceApplication.class, args);
     }

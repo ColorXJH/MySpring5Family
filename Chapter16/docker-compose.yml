@@ -1,15 +1,14 @@
 version: "3"
-
 services:
   mysql:
     image: mysql
     expose:
       - 3306
     environment:
-      - MYSQL_DATABASE=springbucks 
-      - MYSQL_USER=springbucks 
-      - MYSQL_PASSWORD=springbucks 
-      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=mybatis
+      - MYSQL_USER=ColorXJH
+      - MYSQL_PASSWORD=2012WananXJH
+      - MYSQL_ROOT_PASSWORD=123456
 
   redis:
     image: redis
@@ -17,7 +16,7 @@ services:
       - 6379
 
   consul:
-    image: consul
+    image: consul:1.5.2
     expose:
       - 8300
       - 8301
@@ -50,7 +49,7 @@ services:
     # Wait for rabbitmq - Can use wait-for-it instead.
     restart: always
     environment:
-      - RABBIT_ADDRESSES=rabbitmq:5672 
+      - RABBIT_ADDRESSES=rabbitmq:5672
       - RABBIT_USER=spring
       - RABBIT_PASSWORD=spring
 

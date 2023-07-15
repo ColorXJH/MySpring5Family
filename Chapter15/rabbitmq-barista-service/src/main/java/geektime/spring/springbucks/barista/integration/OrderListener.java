@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderListener {
     @Autowired
     private CoffeeOrderRepository orderRepository;
+    //注入 MessageChannel，也可以注入waiter,效果差不多，一样要使用其中的channel
     @Autowired
     @Qualifier(Waiter.FINISHED_ORDERS)
     private MessageChannel finishedOrdersMessageChannel;

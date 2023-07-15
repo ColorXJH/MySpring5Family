@@ -25,8 +25,8 @@ public class OrderListener {
     @Value("${order.barista-prefix}${random.uuid}")
     private String barista;
 
-    @StreamListener(Waiter.NEW_ORDERS)
-    @SendTo(Waiter.FINISHED_ORDERS)
+    @StreamListener(Waiter.NEW_ORDERS)//监听消息
+    @SendTo(Waiter.FINISHED_ORDERS)//使用注解，将方法的返回值发送到FINISHED_ORDERS，通过以上两个注解，将消息的payload放入了方法参数，同时将方法的返回结果有发送了出去
     public Long processNewOrder(Long id) {
         CoffeeOrder o = orderRepository.getOne(id);
         if (o == null) {

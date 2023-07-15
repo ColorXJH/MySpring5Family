@@ -22,7 +22,9 @@ import java.util.concurrent.TimeUnit;
 @EnableAspectJAutoProxy
 @EnableBinding(Waiter.class)
 public class CustomerServiceApplication {
-
+    //注意最后这三个final的项目，都想放在docker上运行，则在使用时不要使用idea自动打包（如果能找到方法跳过测试另说）
+        //进入到各个项目的根目录（也即是和dockerfile平级的目录运行mvn打包命令）
+        //mvn clean package '-Dmaven.test.skip=true'
     public static void main(String[] args) {
         SpringApplication.run(CustomerServiceApplication.class, args);
     }

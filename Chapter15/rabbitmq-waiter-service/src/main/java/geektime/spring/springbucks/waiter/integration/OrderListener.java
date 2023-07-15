@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class OrderListener {
-    @StreamListener(Barista.FINISHED_ORDERS)
+    @StreamListener(Barista.FINISHED_ORDERS)//这个payload也是一个long id 和发送端对应
     public void listenFinishedOrders(Long id) {
         log.info("We've finished an order [{}].", id);
     }
