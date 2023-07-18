@@ -16,7 +16,7 @@ import java.util.Date;
 public class Coffee implements Serializable {
     private Long id;
     private String name;
-    private Money price;
+    //private Money price;
     private Date createTime;
     private Date updateTime;
 }

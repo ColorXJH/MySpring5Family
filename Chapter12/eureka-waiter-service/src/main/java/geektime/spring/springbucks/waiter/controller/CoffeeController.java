@@ -1,5 +1,6 @@
 package geektime.spring.springbucks.waiter.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import geektime.spring.springbucks.waiter.controller.request.NewCoffeeRequest;
 import geektime.spring.springbucks.waiter.model.Coffee;
 import geektime.spring.springbucks.waiter.service.CoffeeService;
@@ -27,12 +28,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/coffee")
 @Slf4j
 public class CoffeeController {
+    @RequestMapping("/testFeign")
+    public Map<String,Object> testFeign(@RequestBody String msg){
+        ObjectMapper mapper=new ObjectMapper();
+        try {
+            Coffee coffee = mapper.readValue(msg, Coffee.class);
+            System.out.println(coffee);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Map<String,Object>result=new HashMap<>();
+        result.put("msg",new Coffee());
+        return result;
+    }
     @Autowired
     private CoffeeService coffeeService;
 
